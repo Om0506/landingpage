@@ -1,4 +1,4 @@
-# 🌐 Spring Boot Contact Form with MySQL
+# 🌐 Maincraft Technologies Internship project 
 
 A modern full-stack web application built using **Spring Boot**, **Thymeleaf**, and **MySQL**. The application allows users to submit contact details through a responsive landing page, stores the submitted information in a MySQL database using **Spring Data JPA**, and exposes a REST API to retrieve all stored contacts.
 
