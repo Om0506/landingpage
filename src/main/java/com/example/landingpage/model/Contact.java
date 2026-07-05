@@ -1,9 +1,20 @@
 package com.example.landingpage.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-public class ContactRequest {
+@Entity
+@Table(name = "contacts")
+public class Contact {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -15,13 +26,21 @@ public class ContactRequest {
     @NotBlank(message = "Message is required")
     private String message;
 
-    public ContactRequest() {
+    public Contact() {
     }
 
-    public ContactRequest(String name, String email, String message) {
+    public Contact(String name, String email, String message) {
         this.name = name;
         this.email = email;
         this.message = message;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -50,8 +69,9 @@ public class ContactRequest {
 
     @Override
     public String toString() {
-        return "ContactRequest{" +
-                "name='" + name + '\'' +
+        return "Contact{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", message='" + message + '\'' +
                 '}';

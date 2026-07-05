@@ -1,23 +1,25 @@
 package com.example.landingpage.service;
 
-import com.example.landingpage.model.ContactRequest;
+import com.example.landingpage.model.Contact;
+import com.example.landingpage.repository.ContactRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ContactService {
 
-    public void processContact(ContactRequest request) {
-        System.out.println("=========================================");
-        System.out.println(" NEW CONTACT FORM SUBMISSION");
-        System.out.println("=========================================");
-        System.out.println();
-        System.out.println("Name    : " + request.getName());
-        System.out.println();
-        System.out.println("Email   : " + request.getEmail());
-        System.out.println();
-        System.out.println("Message :");
-        System.out.println(request.getMessage());
-        System.out.println();
-        System.out.println("=========================================");
+    private final ContactRepository contactRepository;
+
+    public ContactService(ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
+    }
+
+    public void processContact(Contact contact) {
+        contactRepository.save(contact);
+    }
+
+    public List<Contact> getAllContacts() {
+        return contactRepository.findAll();
     }
 }
